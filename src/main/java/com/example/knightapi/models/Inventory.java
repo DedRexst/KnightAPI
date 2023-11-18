@@ -1,4 +1,4 @@
-package com.example.knightapi.services;
+package com.example.knightapi.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
