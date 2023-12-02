@@ -28,7 +28,7 @@ public class BusinessService implements Comparator {
         return arrayList;
     }
 
-    public ArrayList<InventoryDto> getSortedListOfKnightAmmution(int id) {
+    public ArrayList<InventoryDto> getSortedListOfKnightAmmunition(int id) {
         Knight knight = knightRepository.findById(id).get();
         ArrayList<InventoryDto> arrayList = getInventoryDtoArrayList(knight);
 

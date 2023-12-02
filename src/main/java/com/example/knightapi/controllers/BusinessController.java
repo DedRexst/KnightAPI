@@ -2,7 +2,7 @@ package com.example.knightapi.controllers;
 
 import com.example.knightapi.dto.InventoryDto;
 import com.example.knightapi.services.BusinessService;
-import com.example.knightapi.services.Inventory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +22,7 @@ public class BusinessController {
 
     @GetMapping("/sort-knight-ammunition")
     public ArrayList<InventoryDto> sortKnightAmmunition(@PathVariable int id){
-        return businessService.getSortedListOfKnightAmmution(id);
+        return businessService.getSortedListOfKnightAmmunition(id);
     }
 
     @GetMapping("/get-sum-value-knight-ammunition")

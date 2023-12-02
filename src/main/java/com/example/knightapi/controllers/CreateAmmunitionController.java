@@ -18,27 +18,26 @@ public class CreateAmmunitionController {
         this.createAmmunitionService = createAmmunitionService;
     }
     @PutMapping("/item-in-hand")
-    private ResponseEntity<HttpStatus> createItemInHand(@RequestBody ItemInHandDto itemInHandDto, BindingResult bindingResult){
-        createAmmunitionService.createItemInHandDto(itemInHandDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ItemInHandDto createItemInHand(@RequestBody ItemInHandDto itemInHandDto, BindingResult bindingResult){
+        return ItemInHandDto.modelToDto(createAmmunitionService.createItemInHandDto(itemInHandDto));
     }
     @PutMapping("/chestplate")
-    private ResponseEntity<HttpStatus> createChestplate(@RequestBody ChestplateDto chestplateDto, BindingResult bindingResult){
+    public ResponseEntity<HttpStatus> createChestplate(@RequestBody ChestplateDto chestplateDto, BindingResult bindingResult){
         createAmmunitionService.createChestplate(chestplateDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PutMapping("/armor-boots")
-    private ResponseEntity<HttpStatus> createArmorBoots(@RequestBody ArmorBootsDto armorBootsDto, BindingResult bindingResult){
+    public ResponseEntity<HttpStatus> createArmorBoots(@RequestBody ArmorBootsDto armorBootsDto, BindingResult bindingResult){
         createAmmunitionService.createArmorBoots(armorBootsDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PutMapping("/armor-knee-pads")
-    private ResponseEntity<HttpStatus> createArmorKneePads(@RequestBody ArmorKneePadsDto armorKneePadsDto, BindingResult bindingResult){
-        createAmmunitionService.createArmorKneePads(armorKneePadsDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ArmorKneePadsDto createArmorKneePads(@RequestBody ArmorKneePadsDto armorKneePadsDto, BindingResult bindingResult){
+
+        return ArmorKneePadsDto.modelToDto(createAmmunitionService.createArmorKneePads(armorKneePadsDto));
     }
     @PutMapping("/armor-gloves")
-    private ResponseEntity<HttpStatus> createArmorGloves(@RequestBody ArmorGlovesDto armorGlovesDto, BindingResult bindingResult){
+    public ResponseEntity<HttpStatus> createArmorGloves(@RequestBody ArmorGlovesDto armorGlovesDto, BindingResult bindingResult){
         createAmmunitionService.createArmorGloves(armorGlovesDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
