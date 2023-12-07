@@ -1,6 +1,7 @@
 package com.example.knightapi.controllers;
 
-import com.example.knightapi.dto.ItemInHandDto;
+import com.example.knightapi.dto.*;
+import com.example.knightapi.models.ArmorKneePads;
 import com.example.knightapi.repository.KnightRepository;
 import com.example.knightapi.services.BusinessService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,25 +33,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CreateAmmunitionControllerIT {
     @Autowired
     MockMvc mockMvc;
-    @Autowired
-    private KnightRepository knightRepository;
 
-    @Autowired
-    private BusinessService businessService;
     private GreenMail smtpServer;
     @Autowired
     private ObjectMapper objectMapper;
 
-//    @BeforeEach
-//    public void setUp() {
-//        smtpServer = new GreenMail(ServerSetup.SMTP);
-//        smtpServer.start();
-//    }
-//
-//    @AfterEach
-//    public void tearDown() {
-//        smtpServer.stop();
-//    }
+    @BeforeEach
+    public void setUp() {
+            smtpServer = new GreenMail(ServerSetup.SMTP);
+        smtpServer.start();
+    }
+
+    @AfterEach
+    public void tearDown() {
+        smtpServer.stop();
+    }
     @Test
     void createItemInHandTest() throws Exception {
         ItemInHandDto itemInHandDto = new ItemInHandDto("sldfask", "Sword", 5,2);
@@ -59,6 +56,36 @@ class CreateAmmunitionControllerIT {
         this.mockMvc.perform(requestBuilder).andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value(itemInHandDto.getName()));
     }
-
-
+    @Test
+    void createChestplateTest() throws Exception{
+        ChestplateDto chestplateDto = new ChestplateDto("sldfask", "Sword", 5,2);
+        var requestBuilder = put("/create-ammunition/chestplate")
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(objectMapper.writeValueAsString(chestplateDto));
+        this.mockMvc.perform(requestBuilder).andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value(chestplateDto.getName()));
+    }
+    @Test
+    void createKneePadsTest() throws Exception{
+        ArmorKneePadsDto kneePadsDto = new ArmorKneePadsDto("sldfask", "Sword", 5,2);
+        var requestBuilder = put("/create-ammunition/armor-knee-pads")
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(objectMapper.writeValueAsString(kneePadsDto));
+        this.mockMvc.perform(requestBuilder).andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value(kneePadsDto.getName()));
+    }
+    @Test
+    void createArmorBootsTest() throws Exception{
+        ArmorBootsDto armorBootsDto = new ArmorBootsDto("sldfask", "Sword", 5,2);
+        var requestBuilder = put("/create-ammunition/armor-boots")
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(objectMapper.writeValueAsString(armorBootsDto));
+        this.mockMvc.perform(requestBuilder).andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value(armorBootsDto.getName()));
+    }
+    @Test
+    void createArmorGlovesTest() throws Exception{
+        ArmorGlovesDto armorGlovesDto = new ArmorGlovesDto("sldfask", "Sword", 5,2);
+        var requestBuilder = put("/create-ammunition/armor-gloves")
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(objectMapper.writeValueAsString(armorGlovesDto));
+        this.mockMvc.perform(requestBuilder).andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value(armorGlovesDto.getName()));
+    }
 }

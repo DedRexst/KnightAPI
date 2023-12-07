@@ -22,23 +22,21 @@ public class CreateAmmunitionController {
         return ItemInHandDto.modelToDto(createAmmunitionService.createItemInHandDto(itemInHandDto));
     }
     @PutMapping("/chestplate")
-    public ResponseEntity<HttpStatus> createChestplate(@RequestBody ChestplateDto chestplateDto, BindingResult bindingResult){
-        createAmmunitionService.createChestplate(chestplateDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ChestplateDto createChestplate(@RequestBody ChestplateDto chestplateDto, BindingResult bindingResult){
+
+        return ChestplateDto.modelToDto(createAmmunitionService.createChestplate(chestplateDto));
     }
     @PutMapping("/armor-boots")
-    public ResponseEntity<HttpStatus> createArmorBoots(@RequestBody ArmorBootsDto armorBootsDto, BindingResult bindingResult){
-        createAmmunitionService.createArmorBoots(armorBootsDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ArmorBootsDto createArmorBoots(@RequestBody ArmorBootsDto armorBootsDto, BindingResult bindingResult){
+
+        return ArmorBootsDto.modelToDto(createAmmunitionService.createArmorBoots(armorBootsDto));
     }
     @PutMapping("/armor-knee-pads")
     public ArmorKneePadsDto createArmorKneePads(@RequestBody ArmorKneePadsDto armorKneePadsDto, BindingResult bindingResult){
-
         return ArmorKneePadsDto.modelToDto(createAmmunitionService.createArmorKneePads(armorKneePadsDto));
     }
     @PutMapping("/armor-gloves")
-    public ResponseEntity<HttpStatus> createArmorGloves(@RequestBody ArmorGlovesDto armorGlovesDto, BindingResult bindingResult){
-        createAmmunitionService.createArmorGloves(armorGlovesDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ArmorGlovesDto createArmorGloves(@RequestBody ArmorGlovesDto armorGlovesDto, BindingResult bindingResult){
+        return ArmorGlovesDto.modelToDto(createAmmunitionService.createArmorGloves(armorGlovesDto));
     }
 }

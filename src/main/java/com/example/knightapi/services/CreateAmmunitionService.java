@@ -1,8 +1,7 @@
 package com.example.knightapi.services;
 
 import com.example.knightapi.dto.*;
-import com.example.knightapi.models.ArmorKneePads;
-import com.example.knightapi.models.ItemInHand;
+import com.example.knightapi.models.*;
 import com.example.knightapi.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,17 +30,17 @@ public class CreateAmmunitionService {
         return itemInHandRepository.save(ItemInHandDto.dtoToModel(itemInHandDto));
     }
 
-    public void createChestplate(ChestplateDto chestplateDto) {
-        chestplateRepository.save(ChestplateDto.dtoToModel(chestplateDto));
+    public Chestplate createChestplate(ChestplateDto chestplateDto) {
+        return chestplateRepository.save(ChestplateDto.dtoToModel(chestplateDto));
     }
 
-    public void createArmorBoots(ArmorBootsDto armorBootsDto) {
-        armorBootsRepository.save(ArmorBootsDto.dtoToModel(armorBootsDto));
+    public ArmorBoots createArmorBoots(ArmorBootsDto armorBootsDto) {
+        return armorBootsRepository.save(ArmorBootsDto.dtoToModel(armorBootsDto));
     }
     public ArmorKneePads createArmorKneePads(ArmorKneePadsDto armorKneePadsDto) {
         return armorKneePadsRepository.save(ArmorKneePadsDto.dtoToModel(armorKneePadsDto));
     }
-    public void createArmorGloves(ArmorGlovesDto armorGlovesDto){
-        armorGlovesRepository.save(ArmorGlovesDto.dtoToModel(armorGlovesDto));
+    public ArmorGloves createArmorGloves(ArmorGlovesDto armorGlovesDto){
+        return armorGlovesRepository.save(ArmorGlovesDto.dtoToModel(armorGlovesDto));
     }
 }

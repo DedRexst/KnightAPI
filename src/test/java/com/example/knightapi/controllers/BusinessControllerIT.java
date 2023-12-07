@@ -17,11 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class BusinessControllerIT {
     @Autowired
     MockMvc mockMvc;
-    @Autowired
-    private KnightRepository knightRepository;
 
-    @Autowired
-    private BusinessService businessService;
 
 
 
